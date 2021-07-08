@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Recursive";
+  src: url("../fonts/Recursive_VF_1.077.woff2") format("woff2-variations");
+  font-weight: 100 1000;
+}
+
+:root {
+  /* set variation axis values */
+
+  /* Monospace: Sans (natural-width) or Mono (fixed-width) */
+  --mono: 0;
+
+  /* Casual: Linear to Casual */
+  --casual: 0;
+
+  /* Weight: Light to ExtraBlack; usually set with `font-weight` */
+  --weight: 9;
+
+  /* Slant: 0 to -15 degrees, auto cursive at -14 */
+  --slant: 0;
+
+  /* Cursive: always roman, auto substitution, or always cursive */
+  --cursive: 0.5;
+}
+
+* {
+  font-weight: initial;
+
+  /* apply axis values with CSS custom properties */
+  font-variation-settings: "MONO" var(--mono), "CASL" var(--casual),
+    "wght" calc(var(--weight) * 90), "slnt" calc(var(--slant) * -15),
+    "CRSV" var(--cursive);
+}
