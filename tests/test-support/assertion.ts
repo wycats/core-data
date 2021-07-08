@@ -1,6 +1,16 @@
 import { MatchResult } from "./mismatch";
 import { Reporter } from "./reporter";
 
+// @ts-expect-error
+import type { Eq } from "./matchers/eq";
+
+/**
+ * {@link AssertionDescription} is the first step in the process of building an
+ * {@link Assertion}. It is instantiated with a description and reporter, and
+ * {@link AssertionWithActual} is instantiated from
+ * {@link AssertionDescription}'s {@link AssertionDescription#expect} method
+ * once the test has provided an actual value.
+ */
 export class AssertionDescription {
   #description: string;
   #reporter: Reporter;
@@ -36,6 +46,11 @@ class AssertionWithActual<T> {
   }
 }
 
+/**
+ * A {@link Matcher} matches an actual value with an expected pattern. The
+ * simplest kind of matcher is {@link Eq}, which just compares the actual value
+ * with the expected pattern using `===`.
+ */
 export interface Matcher<T, U> {
   match(actual: T, expected: U, description: string): Promise<MatchResult>;
 }
